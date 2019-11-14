@@ -1,0 +1,45 @@
+﻿@model DemoApp.WebMvc.Models.ModelEmployeeMvc
+
+@{
+    ViewBag.Title = "Active Report";
+}
+
+<h2>Active Report</h2>
+<!-- Latest compiled and minified CSS -->
+
+<link href="~/Content/GrapeCity.ActiveReports.Viewer.Html.css" rel="stylesheet" />
+
+<div id="viewer" style="width:100%;height:400px;"></div>
+
+
+
+
+@section scripts{
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js" type="text/javascript"></script>*@
+    <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.js" type="text/javascript"></script>*@
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/knockout-3.5.0.js" type="text/javascript"></script>
+    <script src="~/Scripts/GrapeCity.ActiveReports.Viewer.Html.js" type="text/javascript"></script>
+    @*<script src="~/Scripts/popper.js" type="text/javascript"></script>*@
+
+
+    <script type="text/javascript">
+        $(function () {
+            var viewer = GrapeCity.ActiveReports.Viewer({
+                element: '#viewer',
+                report: {
+                    id: "RdlReport1.rdlx"
+
+
+
+                },
+                reportService: {
+                    url: '/ActiveReports.ReportService.asmx'
+                },
+                uiType: 'desktop'
+            });
+        });
+    </script>
+}

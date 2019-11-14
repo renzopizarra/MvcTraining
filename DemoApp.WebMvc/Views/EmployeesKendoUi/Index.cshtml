@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Kendo Ui";
+}
+
+<h2>Kendo Ui</h2>
+
+
+
+<div class="main-content">
+    <div id="grid1"></div>
+</div>
+
+@*<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.917/styles/kendo.default.min.css">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.917/styles/kendo.common.min.css">*@
+<!--Load Kendo styles from the Kendo CDN service-->
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.default.min.css" />
+
+
+@section scripts
+    {
+
+    @*<script src="https://kendo.cdn.telerik.com/2017.3.913/js/kendo.all.min.js"></script>*@
+
+    <!--Load the required libraries - jQuery, Kendo, Babel and Vue-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.913/js/kendo.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+
+    <script src="~/Scripts/Kendo/kendoui.js"></script>
+    }

@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "KnockOut";
+}
+
+<h2>KnockOut</h2>
+
+<br />
+@*<button data-bind="click: function(){showDialog(true)}">Show</button>*@
+<span><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i> Add New</button></span>
+
+
+<div class="container">
+    @*<div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <span class="glyphicon glyphicon glyphicon-tag" aria-hidden="true"></span></div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group" style="display:none;">
+                            <label for="Id">Employee ID</label>
+                            <input type="text" id="id" class="form-control" data-bind="value: id" placeholder="Employee ID" />
+                        </div>
+                        <div class="form-group">
+                            <label for="FirstName">First Name</label>
+                            <input type="text" id="firstName" class="form-control" data-bind="value: firstName" placeholder="First Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="LastName">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" data-bind="value: lastName" placeholder="Last Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ContactNumber">Contact Number</label>
+                            <input type="text" id="contactNumber" class="form-control" data-bind="value: contactNumber" placeholder="Contact Number" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="email" id="email" class="form-control" data-bind="value: email" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Address">Address</label>
+                            <input type="text" id="address" class="form-control" data-bind="value: address" placeholder="Address" />
+                        </div>
+
+                        <button type="button" class="btn btn-success" data-bind="click: addNewEmployee" id="Save">
+                            <span class="glyphicon  glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+                        </button>
+                        <button type="button" class="btn btn-info" data-bind="click: clearFields" id="Clear">
+                            <span class="glyphicon  glyphicon glyphicon-refresh" aria-hidden="true"></span> Clear
+                        </button>
+                        <button type="button" class="btn btn-warning" data-bind="click: updateEmployee" style="display:none;" id="Update">
+                            <span class="glyphicon  glyphicon glyphicon-pencil" aria-hidden="true"></span> Update Employee
+                        </button>
+                        <button type="button" class="btn btn-default" data-bind="click:cancel " style="display:none;" id="Cancel">
+                            <span class="glyphicon  glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @*<span class="glyphicon  glyphicon glyphicon-zoom-in" aria-hidden="true"></span>*@
+                    <p><i class="fa fa-search-plus"></i><b>Employee List </b></p>
+                    <div class="loadingZone" style="color: #000; display:block; float:right; display:none;">  Refresh Data ...</div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th><i class="fa fa-eye"></i></th>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Contact Number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th></th>
+                            </tr>
+                        </thead> <!-- END THEAD -->
+                        <tbody data-bind="foreach: employeeList">
+                            <tr>
+                                @*<td> <button type="button" class="btn btn-default btn-xs" data-bind="click: $root.detailEmployee"><i class="fa fa-eye"></i></button> </td>*@
+                                <td> <button type="button" class="btn btn-default btn-xs" data-bind="click: $root.detailEmployee" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button> </td>
+
+                                <td> <span data-bind="text: id"></span> </td>
+                                <td> <span data-bind="text: firstName"></span></td>
+                                <td> <span data-bind="text: lastName"></span></td>
+                                <td> <span data-bind="text: contactNumber"></span></td>
+                                <td> <span data-bind="text: email"></span> </td>
+                                <td> <span data-bind="text: address"></span> </td>
+                                <td> <button type="button" class="btn btn-default btn-xs" data-bind="click: $root.deleteEmployee"><i class="fa fa-trash"></i></button> </td>
+
+                            </tr>
+                        </tbody> <!-- END TBODY -->
+                    </table> <!-- END TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- END CONTAINER-->
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1" data-keyboard="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" data-bind="text: title"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @* Body *@
+                <p>Some text in the modal.</p>
+                <form>
+                    <div class="form-group" style="display:none;">
+                        <label for="Id">Employee ID</label>
+                        <input type="text" id="id" class="form-control" data-bind="value: id" placeholder="Employee ID" />
+                    </div><!-- END CUSTOMER ID -->
+                    <div class="form-group">
+                        <label for="FirstName">First Name</label>
+                        <input type="text" id="firstName" class="form-control" data-bind="value: firstName" placeholder="First Name" />
+                    </div><!-- END FIRST NAME -->
+                    <div class="form-group">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" id="lastName" class="form-control" data-bind="value: lastName" placeholder="Last Name" />
+                    </div><!-- END LAST NAME -->
+                    <div class="form-group">
+                        <label for="ContactNumber">Contact Number</label>
+                        <input type="text" id="contactNumber" class="form-control" data-bind="value: contactNumber" placeholder="Contact Number" />
+                    </div><!-- END LAST NAME -->
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="email" id="email" class="form-control" data-bind="value: email" placeholder="Email" />
+                    </div> <!-- END EMAIL -->
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" id="address" class="form-control" data-bind="value: address" placeholder="Address" />
+                    </div> <!-- END EMAIL -->
+
+                    <button type="button" class="btn btn-success" data-bind="click: addNewEmployee" id="Save">
+                        <span class="glyphicon  glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+                    </button>
+                    <button type="button" class="btn btn-info" data-bind="click: clearFields" id="Clear">
+                        <span class="glyphicon  glyphicon glyphicon-refresh" aria-hidden="true"></span> Clear
+                    </button>
+                    <button type="button" class="btn btn-warning" data-bind="click: updateEmployee" style="display:none;" id="Update">
+                        <span class="glyphicon  glyphicon glyphicon-pencil" aria-hidden="true"></span> Update Employee
+                    </button>
+                    <button type="button" class="btn btn-default" data-bind="click:cancel " style="display:none;" id="Cancel">
+                        <span class="glyphicon  glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+                    </button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+@*<link href="https://cdn.oesmith.co.uk/morris-0.5.1.css" rel="stylesheet" />*@
+
+@section scripts
+    {
+    <!-- JS -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    @*<script src="Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/knockout-3.5.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <!-- app.js-->
+    <script src="~/Scripts/KnockoutJs/knockoutapp.js"></script>
+}
